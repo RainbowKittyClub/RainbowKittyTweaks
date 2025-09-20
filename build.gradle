@@ -1,0 +1,127 @@
+plugins {
+	id 'base'
+	id 'fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+	id 'com.gradleup.shadow' version '9.1.0'
+}
+
+java.sourceCompatibility = JavaVersion.VERSION_21
+java.targetCompatibility = JavaVersion.VERSION_21
+
+base {
+	archivesName.set(project.mod_id)
+}
+
+version = project.mod_version
+group = project.maven_group
+
+configurations.modImplementation.extendsFrom(configurations.shadow)
+
+dependencies {
+	// To change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+// Shadowing the libraries
+
+tasks.shadowJar {
+	archiveClassifier.set('shadow-dev')
+	configurations = [project.configurations.shadow]
+	enableAutoRelocation = true
+	relocationPrefix = "${project.group}.${project.mod_id}.shadow"
+}
+
+remapJar {
+	dependsOn shadowJar
+	mustRunAfter shadowJar
+	input.set shadowJar.archiveFile
+	archiveClassifier.set(null)
+}
+
+processResources {
+	// Collect only simple, serializable project properties (e.g. values from gradle.properties)
+	// to avoid fingerprinting errors from complex Gradle objects.
+	def resourceProps = [:]
+	project.properties.each { k, v ->
+		if (v instanceof CharSequence || v instanceof Number || v instanceof Boolean) {
+			resourceProps[k.toString()] = v.toString()
+		}
+	}
+
+	// Ensure core identifiers are present and coerced to String
+	resourceProps.version = project.version.toString()
+	resourceProps.group = project.group.toString()
+	resourceProps.name = project.name.toString()
+
+	// Track these inputs for incremental builds
+	inputs.properties(resourceProps)
+
+	// Provide both flat props and a nested 'project' map for ${project.*} references
+	def expandMap = resourceProps + [project: resourceProps]
+
+	filesMatching("fabric.mod.json") {
+		expand(expandMap)
+	}
+}
+
+// Validate generated fabric.mod.json after resources are processed.
+tasks.register('validateFabricModJson') {
+	group = 'verification'
+	description = 'Validate that the generated build/resources/main/fabric.mod.json is valid JSON.'
+
+	doLast {
+		def jsonFile = file("${buildDir}/resources/main/fabric.mod.json")
+		if (!jsonFile.exists()) {
+			throw new GradleException("fabric.mod.json not found at: ${jsonFile}. Ensure resources are processed.")
+		}
+		try {
+			new groovy.json.JsonSlurper().parse(jsonFile)
+			logger.lifecycle("fabric.mod.json is valid JSON: ${jsonFile}")
+		} catch (Exception e) {
+			throw new GradleException("fabric.mod.json is not valid JSON: ${e.message}", e)
+		}
+	}
+}
+
+// Ensure validation runs after resources are processed
+tasks.named('processResources') {
+	finalizedBy tasks.named('validateFabricModJson')
+}
+
+// Ensure that the encoding is set to UTF-8, no matter what the system default is
+// this fixes some edge cases with special characters not displaying correctly
+// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = "UTF-8"
+}
+
+// Let the Java plugin create a sourcesJar task so Loom can wire it correctly.
+java {
+	withSourcesJar()
+}
+
+jar {
+	from "LICENSE"
+}
+
+// Configure the maven publication
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			// add all the jars that should be included when publishing to maven
+			artifact(remapJar) {
+				builtBy remapJar
+			}
+			artifact(sourcesJar)
+		}
+	}
+
+	// select the repositories you want to publish to
+	repositories {
+		// uncomment to publish to the local maven
+		// mavenLocal()
+	}
+}
