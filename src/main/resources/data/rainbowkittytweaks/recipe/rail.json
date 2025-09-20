@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "tag": "minecraft:stick"
+    },
+    "I": {
+      "tag": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    "I I",
+    "ISI",
+    "I I"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:rail"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {
+      "tag": "minecraft:redstone"
+    },
+    "S": {
+      "tag": "minecraft:stick"
+    },
+    "G": {
+      "tag": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "G G",
+    "GSG",
+    "GRG"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:powered_rail"
+  }
+}
