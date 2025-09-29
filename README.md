@@ -3,11 +3,11 @@
 # Recipe Tweaks
 
 ### Name Tag Recipe
-- Part of the `rainbowkittytweaks:cheaper_maps` datapack. Enabled by default.
+- Part of the `rainbowkittytweaks:craftable_name_tag` datapack. Enabled by default.
 ![Name Tag Recipe](img/name_tag_recipe.png)
 
 ### Cheaper Rails
-- Part of the `rainbowkittytweaks:cheaper_maps` datapack. Enabled by default.
+- Part of the `rainbowkittytweaks:cheaper_rails` datapack. Enabled by default.
 ![Rail Recipe](img/rail_recipe.png)
 ![Powered Rail Recipe](img/powered_rail_recipe.png)
 ![Detector Rail Recipe](img/detector_rail_recipe.png)
@@ -15,7 +15,7 @@
 
 ### Cheaper maps
 - Part of the `rainbowkittytweaks:cheaper_maps` datapack. Enabled by default.
-![Map Reipce](img/map_recipe.png)
+![Map Recipe](img/map_recipe.png)
 
 # Gameplay Tweaks
 
