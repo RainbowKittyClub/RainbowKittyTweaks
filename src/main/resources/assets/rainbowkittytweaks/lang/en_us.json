@@ -1,4 +1,31 @@
 {
-  "title.rainbowkitchensink": "Rainbow Kitchen Sink",
-  "category.main.rainbowkitchensink": "Main"
+  "title.rainbowkittytweaks": "RainbowKittyTweaks",
+  "category.main.rainbowkittytweaks": "Main",
+
+  "gamerule.rainbowkittytweaks.commandBlocksEnabled": "Command Blocks Enabled",
+  "gamerule.rainbowkittytweaks.commandBlocksEnabled.description": "Allow command blocks to execute commands",
+
+  "gamerule.rainbowkittytweaks.fireArrowsLightFire": "Fire Arrows Light Fire",
+  "gamerule.rainbowkittytweaks.fireArrowsLightFire.description": "Flaming arrows ignite blocks on impact",
+
+  "gamerule.rainbowkittytweaks.craftableNameTags": "Craftable Name Tags",
+  "gamerule.rainbowkittytweaks.craftableNameTags.description": "Allow players to craft name tags",
+
+  "gamerule.rainbowkittytweaks.cheaperRails": "Cheaper Rails",
+  "gamerule.rainbowkittytweaks.cheaperRails.description": "Use cheaper crafting recipes for rails",
+
+  "gamerule.rainbowkittytweaks.cheaperMaps": "Cheaper Maps",
+  "gamerule.rainbowkittytweaks.cheaperMaps.description": "Use cheaper crafting recipe for maps",
+
+  "gamerule.rainbowkittytweaks.legArmorProtectsFromBerryThorns": "Leg Armor Protects From Berry Thorns",
+  "gamerule.rainbowkittytweaks.legArmorProtectsFromBerryThorns.description": "Prevent berry bush damage when wearing leg armor or mount armor",
+
+  "gamerule.rainbowkittytweaks.giveAllRecipes": "Give All Recipes",
+  "gamerule.rainbowkittytweaks.giveAllRecipes.description": "Unlock all crafting recipes for players on spawn",
+
+  "gamerule.rainbowkittytweaks.ironGolemRegenTicks": "Iron Golem Regeneration Rate",
+  "gamerule.rainbowkittytweaks.ironGolemRegenTicks.description": "Number of ticks between each regeneration event for iron golems (0 to disable)",
+
+  "gamerule.rainbowkittytweaks.ironGolemRegenDelay": "Iron Golem Regeneration Delay",
+  "gamerule.rainbowkittytweaks.ironGolemRegenDelay.description": "Number of ticks after taking damage before iron golem regeneration can start (0 to disable)"
 }

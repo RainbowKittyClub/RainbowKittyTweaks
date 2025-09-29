@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "S": {
-      "tag": "minecraft:string"
-    },
-    "I": {
-      "tag": "minecraft:iron_ingot"
-    },
-    "P": {
-      "tag": "minecraft:paper"
-    }
+    "S": "minecraft:string",
+    "I": "minecraft:iron_ingot",
+    "P": "minecraft:paper"
   },
   "pattern": [
     " SI",
@@ -18,7 +12,7 @@
     "P  "
   ],
   "result": {
-    "count": 1,
     "id": "minecraft:name_tag"
-  }
+  },
+  "show_notification": false
 }

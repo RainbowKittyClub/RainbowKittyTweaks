@@ -1,10 +1,14 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.kgadberry.nametag_recipe.mixin",
+  "package": "club.rainbowkitty.tweaks.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    
+    "SweetBerryBushBlockMixin",
+    "ServerPlayerEntityMixin",
+    "CommandBlockExecutorMixin",
+    "PersistentProjectileEntityMixin",
+    "MobEntityMixin"
   ],
   "client": [
   ],

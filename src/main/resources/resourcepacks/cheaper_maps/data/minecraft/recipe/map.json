@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "tag": "minecraft:paper"
-    },
-    "B": {
-      "tag": "minecraft:black_dye"
-    }
+    "P": "minecraft:paper",
+    "B": "minecraft:black_dye"
   },
   "pattern": [
     "PPP",
@@ -15,7 +11,8 @@
     "PPP"
   ],
   "result": {
-    "count": 2,
+    "count": 1,
     "id": "minecraft:map"
-  }
+  },
+  "show_notification": false
 }
