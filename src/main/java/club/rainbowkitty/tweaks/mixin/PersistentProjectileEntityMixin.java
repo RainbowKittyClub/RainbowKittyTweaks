@@ -41,7 +41,7 @@ public abstract class PersistentProjectileEntityMixin extends ProjectileEntity {
     private void rainbowkittytweaks$igniteOnFireArrowHit(BlockHitResult hit, CallbackInfo ci) {
         if (hit.getType() == HitResult.Type.MISS) return;
         PersistentProjectileEntity self = (PersistentProjectileEntity) (Object) this;
-        if (!(self.getWorld() instanceof ServerWorld world)) return;
+        if (!(self.getEntityWorld() instanceof ServerWorld world)) return;
 
         FireArrowsLightFire.onArrowBlockHit(self, world, hit);
     }

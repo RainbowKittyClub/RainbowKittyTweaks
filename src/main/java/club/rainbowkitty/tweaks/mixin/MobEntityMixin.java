@@ -29,7 +29,7 @@ public class MobEntityMixin {
     @Inject(method = "tick", at = @At("TAIL"))
     private void rainbowkittytweaks$ironGolemRegenEffect(CallbackInfo ci) {
         MobEntity self = (MobEntity) (Object) this;        
-        if (!(self.getWorld() instanceof ServerWorld world)) return;
+        if (!(self.getEntityWorld() instanceof ServerWorld world)) return;
         
         // Only apply regeneration to iron golems for now
         if ((self instanceof IronGolemEntity)) IronGolemPassiveRegen.ironGolemRegenTick(self, world, this.rainbowkittyTweaks$mobRegenState);

@@ -36,7 +36,7 @@ public final class GiveAllRecipesAtJoin {
 
     public static boolean tryGiveAllRecipes(ServerPlayerEntity player, ServerWorld world) {
         // Unlock all recipes by getting them from the server's recipe manager
-        var server = player.getServer();
+        var server = world.getServer();
         if (server != null) {
             // Respect gamerule: giveAllRecipes
             if (!GiveAllRecipesAtJoin.ALLOW_GIVE_ALL_RECIPES.getValue(world)) return false;

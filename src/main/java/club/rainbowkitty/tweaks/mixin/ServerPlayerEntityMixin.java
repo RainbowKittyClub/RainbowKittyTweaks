@@ -23,7 +23,7 @@ public class ServerPlayerEntityMixin {
     @Inject(method = "onSpawn", at = @At("TAIL"))
     private void rainbowkittytweaks$unlockAllRecipesAtLogin(CallbackInfo ci) {
         ServerPlayerEntity self = (ServerPlayerEntity) (Object) this;
-        if (!(self.getWorld() instanceof ServerWorld world)) return;
+        if (!(self.getEntityWorld() instanceof ServerWorld world)) return;
 
         GiveAllRecipesAtJoin.tryGiveAllRecipes(self, world);
     }
